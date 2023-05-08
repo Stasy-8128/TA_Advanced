@@ -1,7 +1,9 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class DashboardPage {
     private WebDriver driver;
@@ -11,7 +13,7 @@ public class DashboardPage {
     }
 
     public boolean isDashboardTitlePresent (){
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS) ;
+        driver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
         return driver.findElement(By.xpath("//span[@title='All Dashboards']")).isDisplayed();
     }
 }
