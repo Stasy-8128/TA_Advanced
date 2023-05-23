@@ -1,18 +1,17 @@
-package pages;
+package core.pages.implementations;
 
+import core.pages.BasePage;
+import core.pages.implementations.DashboardPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
-    private WebDriver driver;
-
+public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
-    public DashboardPage login(String username, String password) {
+    public void login(String username, String password) {
         driver.findElement(By.name("login")).sendKeys(username);
         driver.findElement(By.name("password")).sendKeys(password);
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        return new DashboardPage(driver);
     }
 }

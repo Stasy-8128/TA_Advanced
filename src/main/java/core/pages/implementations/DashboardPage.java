@@ -1,15 +1,15 @@
-package pages;
+package core.pages.implementations;
 
+import core.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 
-public class DashboardPage {
-    private WebDriver driver;
+public class DashboardPage extends BasePage{
 
     public DashboardPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public boolean isDashboardTitlePresent (){
