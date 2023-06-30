@@ -4,8 +4,10 @@ import core.pages.implementations.LaunchesPage;
 import core.pages.implementations.LoginPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
+import org.openqa.selenium.interactions.Actions;
 import utility.enums.Builds;
 import utility.enums.DefectTypes;
 import utility.enums.LaunchesFields;
@@ -72,5 +74,17 @@ public class LaunchesTest extends BaseTest{
         LaunchPage launchPage = new LaunchPage(getDriver());
         launchPage.assertLaunchDefectType(defectType.name());
     }
-
+    @Test
+    void test4() {
+        getDriver().get("http://localhost:8080/ui/#login");
+        LoginPage loginPage = new LoginPage(getDriver());
+        loginPage.login("superadmin","erebus");
+        Menu menuBar = new Menu(getDriver());
+        menuBar.assertMenuAppeared();
+        menuBar.clickLaunchesButton();
+        LaunchesPage launches = new LaunchesPage(getDriver());
+        launches.dragDropPhoto();
+        launches.scrollToTestElement();
+        launches.jsClick();
+    }
 }
